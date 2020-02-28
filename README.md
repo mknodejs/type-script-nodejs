@@ -5,3 +5,27 @@
 - Path Intellisense
 - Prettier
 - TSLint
+- npm init
+- tsc --init
+- npm install --save express body-parser
+- npm install --save-dev nodemon
+- npm install --save-dev @types/node 
+- npm install --save-dev @types/express
+
+```
+npm init
+tsc --init
+npm install --save express body-parser 
+npm install --save-dev nodemon 
+npm install --save-dev @type/node
+npm install --save-dev @type/express
+
+tsc -w
+start nodemon dist/app.js
+
+npm install -g typescript
+npm install -g typescript@next
+http://christopherkottmyer.com/blog/2018/01/30/graphite-monitor/
+https://www.youtube.com/watch?v=F_oOtaxb0L8
+youtube.com/watch?v=0oXYLzuucwE&list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q&index=1
+```
