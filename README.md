@@ -5,12 +5,14 @@
 - Path Intellisense
 - Prettier
 - TSLint
+- Debugger For Chrome
 - npm init
 - tsc --init
 - npm install --save express body-parser
 - npm install --save-dev nodemon
 - npm install --save-dev @types/node
 - npm install --save-dev @types/express
+- npm install -D tslint-config-prettier
 
 ```
 npm init

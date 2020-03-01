@@ -1,4 +1,4 @@
-import { getTodos } from './getTodos'
+import { getTodos } from './get-todos'
 import { Router } from 'express'
 
 const todoRouter = Router()
