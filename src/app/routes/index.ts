@@ -1,8 +1,9 @@
-import { Application } from 'express'
-import todoRouter from './todos'
+import heartbeatRouter from './heartbeat'
+import { Router } from 'express'
 
-const setRoutes = (app: Application) => {
-  app.use('/todos', todoRouter)
+const getRouters = () => {
+  const routers: [[string, Router]] = [['/heartbeat', heartbeatRouter]]
+  return routers
 }
 
-export default setRoutes
+export default getRouters
