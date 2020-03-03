@@ -1,6 +1,6 @@
 # type-script-nodejs
 
-- http://localhost:3000/heartbeat
+- http://localhost:3000/healthcheck
 - ESLint
 - Material icon theame
 - Path Intellisense

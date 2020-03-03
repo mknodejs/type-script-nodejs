@@ -1,7 +1,7 @@
-import { getHeartbeat } from './getHeartbeat'
+import { getHealthStatus } from './getHealthStatus'
 import RouterBuilder from '../../shared/route/routerBuilder'
 
 const router = new RouterBuilder()
-router.get('/', getHeartbeat)
+router.get('/', getHealthStatus)
 
 export default router

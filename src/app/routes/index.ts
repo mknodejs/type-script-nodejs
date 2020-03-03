@@ -1,8 +1,8 @@
-import heartbeatRouter from './heartbeat'
+import heartbeatRouter from './healthCheck'
 import RouterBuilder from '../shared/route/routerBuilder'
 
 const getRouters = () => {
-  const routers: [[string, RouterBuilder]] = [['/heartbeat', heartbeatRouter]]
+  const routers: [[string, RouterBuilder]] = [['/healthcheck', heartbeatRouter]]
   return routers
 }
 
