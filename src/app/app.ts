@@ -7,9 +7,6 @@ const app = express()
 app.use(cors())
 app.use(json())
 app.use(cookieParser())
-app.get('/', function(req, res) {
-  res.send('hello world')
-})
 
 getRouters().forEach(router => {
   console.log({ path: router[0] })
