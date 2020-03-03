@@ -10,6 +10,15 @@ export default class RouterBuilder {
   post = (path: string, cb: RouteCallback) => {
     this.router.post(path, routeExecuter(cb))
   }
+  put = (path: string, cb: RouteCallback) => {
+    this.router.put(path, routeExecuter(cb))
+  }
+  patch = (path: string, cb: RouteCallback) => {
+    this.router.patch(path, routeExecuter(cb))
+  }
+  delete = (path: string, cb: RouteCallback) => {
+    this.router.delete(path, routeExecuter(cb))
+  }
   getRouter = () => {
     return this.router
   }
