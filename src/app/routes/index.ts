@@ -1,8 +1,9 @@
-import heartbeatRouter from './healthCheck'
+import healthCheckRouter from './healthCheck'
 import RouterBuilder from '../shared/route/routerBuilder'
+type Routers = [string, RouterBuilder]
 
 const getRouters = () => {
-  const routers: [[string, RouterBuilder]] = [['/healthcheck', heartbeatRouter]]
+  const routers: Routers[] = [['/healthcheck', healthCheckRouter]]
   return routers
 }
 
