@@ -1,9 +1,8 @@
-import { RequestHandler } from 'express'
+import { Request } from 'express'
 import { Heartbeat } from './heartbeat.model'
-import { Response } from '../../../shared/response/response'
+import { Response, IResponse } from '../../../shared/response/response'
 
-export const getHeartbeat: RequestHandler = (req, res, next) => {
+export const getHeartbeat = (req: Request): IResponse => {
   const heartbeat: Heartbeat = { id: '1', text: 'Test' }
-  const response = new Response(heartbeat)
-  res.json({ response })
+  return new Response(heartbeat)
 }

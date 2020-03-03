@@ -1,7 +1,7 @@
 import { getHeartbeat } from './getHeartbeat'
-import { Router } from 'express'
+import RouterBuilder from '../../shared/route/routerBuilder'
 
-const router = Router()
+const router = new RouterBuilder()
 router.get('/', getHeartbeat)
 
 export default router
