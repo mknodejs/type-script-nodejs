@@ -27,7 +27,7 @@ export const debug: LogInput = async (req, data) => {
 
 const enrichWithMetaData = (req: Request, data: any): any => {
   return {
-    ...data,
-    nodeId: NODE_ID
+    data,
+    searchKeys: { nodeId: NODE_ID }
   }
 }
