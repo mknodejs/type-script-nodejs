@@ -7,6 +7,6 @@ export const webservicecheck = async (req: Request): Promise<IResponse> => {
     url: '/healthcheck',
     method: 'get'
   }
-  const response = await ocapiRequest(input)
+  const response = await ocapiRequest(req, input)
   return new Response(response.data)
 }
