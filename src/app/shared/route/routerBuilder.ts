@@ -3,21 +3,25 @@ import { RouteCallback } from './routeCallback'
 import { ErrorResponse } from '../response/response'
 import routeExecuter from './routeExecuter'
 
+interface RouterHandler {
+  (path: string, cb: RouteCallback, defaultErrorResponse?: ErrorResponse): void
+}
+
 export default class RouterBuilder {
   private readonly router = Router()
-  get = (path: string, cb: RouteCallback, defaultErrorResponse?: ErrorResponse) => {
+  get: RouterHandler = (path, cb, defaultErrorResponse) => {
     this.router.get(path, routeExecuter(cb, defaultErrorResponse))
   }
-  post = (path: string, cb: RouteCallback, defaultErrorResponse?: ErrorResponse) => {
+  post: RouterHandler = (path, cb, defaultErrorResponse) => {
     this.router.post(path, routeExecuter(cb, defaultErrorResponse))
   }
-  put = (path: string, cb: RouteCallback, defaultErrorResponse?: ErrorResponse) => {
+  put: RouterHandler = (path, cb, defaultErrorResponse) => {
     this.router.put(path, routeExecuter(cb, defaultErrorResponse))
   }
-  patch = (path: string, cb: RouteCallback, defaultErrorResponse?: ErrorResponse) => {
+  patch: RouterHandler = (path, cb, defaultErrorResponse) => {
     this.router.patch(path, routeExecuter(cb, defaultErrorResponse))
   }
-  delete = (path: string, cb: RouteCallback, defaultErrorResponse?: ErrorResponse) => {
+  delete: RouterHandler = (path, cb, defaultErrorResponse) => {
     this.router.delete(path, routeExecuter(cb, defaultErrorResponse))
   }
   getRouter = () => {
