@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import { RouteCallback } from './routeCallback'
-import { IResponse, ErrorResponse } from '../response/response'
+import { ErrorResponse } from '../response/response'
 
 const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: ErrorResponse) => {
-  const executer = (req: Request, res: Response, next: NextFunction) => {
+  const executer = async (req: Request, res: Response, next: NextFunction) => {
     const startTime = Date.now()
     try {
-      const response: IResponse = routeCallback(req)
+      const response = await routeCallback(req)
       res.status(response.httpCode).json(response.data)
     } catch (error) {
       console.log(error)
