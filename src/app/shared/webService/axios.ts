@@ -1,4 +1,5 @@
 import axios, { Method, AxiosRequestConfig, AxiosResponse } from 'axios'
+//import * as logger from '../logger'
 
 export interface WebServiceInput {
   url: string

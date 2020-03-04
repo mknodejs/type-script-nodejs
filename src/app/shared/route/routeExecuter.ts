@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { RouteCallback } from './routeCallback'
 import { ErrorResponse } from '../response/response'
+import * as logger from '../logger'
 
 const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: ErrorResponse) => {
   const executer = async (req: Request, res: Response, next: NextFunction) => {
@@ -17,7 +18,7 @@ const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: Erro
         res.status(errorResponse.httpCode).json(errorResponse.data)
       }
     } finally {
-      console.log({ executionTime: Date.now() - startTime })
+      logger.debug(req, { executionTime: Date.now() - startTime })
     }
   }
   return executer
