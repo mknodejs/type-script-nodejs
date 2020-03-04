@@ -19,9 +19,9 @@ export const restWebServiceRequest = async (
     const response = await instance.request(config)
     return response
   } catch (error) {
-    console.log({ error })
+    logger.error(req, { error })
     throw error
   } finally {
-    logger.debug(req, { webServiceName, executionTime: Date.now() - startTime })
+    logger.info(req, { webServiceName, executionTime: Date.now() - startTime })
   }
 }

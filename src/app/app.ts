@@ -3,6 +3,7 @@ import { json } from 'body-parser'
 import cors from 'cors'
 import getRouters from './routes'
 import cookieParser from 'cookie-parser'
+
 const app = express()
 app.use(cors())
 app.use(json())

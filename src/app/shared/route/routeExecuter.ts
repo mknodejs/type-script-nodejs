@@ -10,7 +10,7 @@ const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: Erro
       const response = await routeCallback(req)
       res.status(response.httpCode).json(response.data)
     } catch (error) {
-      console.log(error)
+      logger.error(req, { error })
       if (defaultErrorResponse) {
         res.status(defaultErrorResponse.httpCode).json(defaultErrorResponse.data)
       } else {
