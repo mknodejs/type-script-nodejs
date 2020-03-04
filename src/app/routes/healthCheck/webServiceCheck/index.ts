@@ -1,8 +1,12 @@
 import { Request } from 'express'
 import { Response, IResponse } from '../../../shared/response/response'
-import * as axios from '../../../shared/webService/axios'
+import { OcapiRequestInput, ocapiRequest } from '../../../shared/webService/ocapi'
 
 export const webservicecheck = async (req: Request): Promise<IResponse> => {
-  const response = await axios.get()
+  const input: OcapiRequestInput = {
+    url: '/healthcheck',
+    method: 'get'
+  }
+  const response = await ocapiRequest(input)
   return new Response(response.data)
 }

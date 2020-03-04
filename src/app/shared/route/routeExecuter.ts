@@ -12,6 +12,9 @@ const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: Erro
       console.log(error)
       if (defaultErrorResponse) {
         res.status(defaultErrorResponse.httpCode).json(defaultErrorResponse.data)
+      } else {
+        const errorResponse = new ErrorResponse({ systemError: error.message })
+        res.status(errorResponse.httpCode).json(errorResponse.data)
       }
     } finally {
       console.log({ executionTime: Date.now() - startTime })
