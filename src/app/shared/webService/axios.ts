@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Request } from 'express'
 import * as logger from '../logger'
+import { logExecutionDetails } from '../logger/searchKeys'
 
 export interface WebServiceInput {
   url: string
@@ -17,6 +18,7 @@ export const restWebServiceRequest = async (
   try {
     const instance = axios.create()
     const response = await instance.request(config)
+    logExecutionDetails(req, config, webServiceName, startTime, response)
     return response
   } catch (error) {
     logger.error(req, { error })
