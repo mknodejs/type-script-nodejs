@@ -1,4 +1,4 @@
-import healthCheckRouter from './healthCheck'
+import healthCheckRouter from './healthcheck'
 import RouterBuilder from '../shared/route/routerBuilder'
 type Routers = [string, RouterBuilder]
 
