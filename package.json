@@ -7,12 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "build:dev": "tsc -w",
-    "start": "node ./dist/app/app.js",
-    "start:dev": "nodemon ./dist/app/app.js"
+    "start": "node ./dist/app.js",
+    "start:dev": "nodemon ./dist/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^17.1.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "class-transformer": "^0.2.3",
@@ -20,6 +21,9 @@
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "get-value": "^3.0.1",
+    "has-value": "^2.0.2",
+    "set-value": "^3.0.1",
     "shortid": "^2.2.15",
     "winston": "^3.2.1"
   },
