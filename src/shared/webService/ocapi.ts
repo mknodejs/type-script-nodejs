@@ -3,7 +3,7 @@ import { Method, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Request } from 'express'
 // https://www.npmjs.com/package/axios
 
-const WEB_SERVICE_NAME = 'OCAPI'
+const WEB_SERVICE_NAME = 'ocapi_sfcc'
 
 const CONFIG: AxiosRequestConfig = {
   baseURL: 'http://localhost:3000/',

@@ -28,7 +28,7 @@ export const addRequestId = (req: Request, res: Response, next: NextFunction) =>
   }
 }
 
-export const logExecutionDetails = (
+export const logWebServiceDetails = (
   req: Request,
   config: AxiosRequestConfig,
   webServiceName: string,

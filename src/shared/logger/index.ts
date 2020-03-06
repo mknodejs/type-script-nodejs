@@ -34,10 +34,10 @@ export const debug: LogInput = async (req, logKey, data) => {
   logData(LogLevels.info, req, logKey, data)
 }
 
-const logData = (logLevels: any, req: Request, logKey: string, data: any) => {
+const logData = (logLevel: any, req: Request, logKey: string, data: any) => {
   try {
-    if (donotLog(logLevels.debug[0])) return
-    logger.log({ level: logLevels.debug[1], message: enrichWithSearchKeys(req, logKey, data) })
+    if (donotLog(logLevel[0])) return
+    logger.log({ level: logLevel[1], message: enrichWithSearchKeys(req, logKey, data) })
   } catch (error) {
     console.log({ logKey, error })
   }

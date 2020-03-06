@@ -3,7 +3,7 @@ import { json } from 'body-parser'
 import cors from 'cors'
 import getRouters from './routes'
 import cookieParser from 'cookie-parser'
-import { addRequestId } from './shared/logger/search-keys'
+import { addRequestId } from './shared/logger/request-execution-details'
 const app = express()
 app.use(cors())
 app.use(json())
