@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 import shortid from 'shortid'
 import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import setValue from 'set-value'
+import getValue from 'get-value'
 
 type WebServiceData = { serviceName: string; status?: number; url?: string; executionTime?: number }
 
@@ -14,9 +16,9 @@ export interface RequestWithMetaData extends Request {
 
 export const addRequestId = (req: Request, res: Response, next: NextFunction) => {
   try {
+    if (!getValue(req, 'header.x-request-id')) setValue(req, 'header.x-request-id', shortid())
     const request = <RequestWithMetaData>req
     request.node_app_req_custom_meta_data = {
-      requestId: shortid(),
       startTime: Date.now(),
       webServices: []
     }

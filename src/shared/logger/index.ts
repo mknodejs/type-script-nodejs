@@ -1,7 +1,8 @@
 import { config } from '../../config'
-import { RequestWithMetaData } from './search-keys'
 import { Request } from 'express'
 import { logger } from './winston'
+import getValue from 'get-value'
+
 interface LogInput {
   (req: Request, data: any): void
 }
@@ -14,7 +15,7 @@ const LogLevels = {
 }
 
 const LOG_LEVEL = LogLevels[config.common.logLevel]
-const NODE_ID = Date.now() + Math.floor(Math.random() * 1000)
+const NODE_ID = Date.now() + Math.floor(Math.random() * 10000)
 const donotLog = (logLevels: number) => logLevels < LOG_LEVEL
 
 export const error: LogInput = async (req, data) => {
@@ -38,11 +39,7 @@ export const debug: LogInput = async (req, data) => {
 }
 
 const enrichWithSearchKeys = (req: Request, data: any): any => {
-  const request = <RequestWithMetaData>req
-  let requestId = 'NA'
-  if (request.node_app_req_custom_meta_data) {
-    requestId = request.node_app_req_custom_meta_data.requestId || 'NA'
-  }
+  const requestId = getValue(req, 'header.x-request-id', 'NA')
   return {
     data,
     searchKeys: { nodeId: NODE_ID, requestId }
