@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { RouteCallback } from './routeCallback'
+import { RouteCallback } from './route-callback'
 import { ErrorResponse } from '../response/response'
 import * as logger from '../logger'
 

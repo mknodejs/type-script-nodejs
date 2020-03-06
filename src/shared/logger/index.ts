@@ -1,5 +1,5 @@
 import { LogLevels, donotLog, NODE_ID } from './config'
-import { RequestWithMetaData } from './searchKeys'
+import { RequestWithMetaData } from './search-keys'
 import { Request } from 'express'
 import { logger } from './winston'
 interface LogInput {

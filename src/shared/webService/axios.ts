@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Request } from 'express'
 import * as logger from '../logger'
-import { logExecutionDetails } from '../logger/searchKeys'
+import { logExecutionDetails } from '../logger/search-keys'
 
 export interface WebServiceInput {
   url: string

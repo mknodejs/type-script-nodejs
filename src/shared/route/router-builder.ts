@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import { RouteCallback } from './routeCallback'
+import { RouteCallback } from './route-callback'
 import { ErrorResponse } from '../response/response'
-import routeExecuter from './routeExecuter'
+import routeExecuter from './route-executer'
 
 interface RouterHandler {
   (path: string, cb: RouteCallback, defaultErrorResponse?: ErrorResponse): void

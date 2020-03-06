@@ -1,5 +1,5 @@
 import healthCheckRouter from './healthcheck'
-import RouterBuilder from '../shared/route/routerBuilder'
+import RouterBuilder from '../shared/route/router-builder'
 type Routers = [string, RouterBuilder]
 
 const getRouters = () => {
