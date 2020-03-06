@@ -19,7 +19,7 @@ const SERVER_INSTANCE_ID = Date.now() + Math.floor(Math.random() * 10000)
 const donotLog = (logLevels: number) => logLevels < LOG_LEVEL
 
 export const error: LogInput = async (req, logKey, data) => {
-  logData(LogLevels.warn, req, logKey, data)
+  logData(LogLevels.error, req, logKey, data)
 }
 
 export const warn: LogInput = async (req, logKey, data) => {
@@ -31,7 +31,7 @@ export const info: LogInput = async (req, logKey, data) => {
 }
 
 export const debug: LogInput = async (req, logKey, data) => {
-  logData(LogLevels.info, req, logKey, data)
+  logData(LogLevels.debug, req, logKey, data)
 }
 
 const logData = (logLevel: any, req: Request, logKey: string, data: any) => {
@@ -44,10 +44,11 @@ const logData = (logLevel: any, req: Request, logKey: string, data: any) => {
 }
 
 const enrichWithSearchKeys = (req: Request, logKey: string, data: any): any => {
+  const url = getValue(req, 'originalUrl', 'NA')
   const requestId = getValue(req, 'header.x-request-id', 'NA')
   return {
     logKey,
     data,
-    searchKeys: { serverId: SERVER_INSTANCE_ID, requestId }
+    searchKeys: { serverId: SERVER_INSTANCE_ID, requestId, url }
   }
 }

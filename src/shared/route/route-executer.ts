@@ -2,12 +2,17 @@ import { Request, Response, NextFunction } from 'express'
 import { RouteCallback } from './route-callback'
 import { ErrorResponse } from '../response/response'
 import * as logger from '../logger'
+import getValue from 'get-value'
 
 const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: ErrorResponse) => {
   const executer = async (req: Request, res: Response, next: NextFunction) => {
     const startTime = Date.now()
     try {
+      const params = getValue(req, 'params', 'NA')
+      const body = getValue(req, 'body', 'NA')
+      logger.debug(req, 'route_executer_input', { params, body })
       const response = await routeCallback(req)
+      logger.debug(req, 'route_executer_response', { response })
       res.status(response.httpCode).json(response.data)
     } catch (error) {
       logger.error(req, 'route_executer_error', { error })
