@@ -10,7 +10,7 @@ const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: Erro
       const response = await routeCallback(req)
       res.status(response.httpCode).json(response.data)
     } catch (error) {
-      logger.error(req, { error })
+      logger.error(req, 'route_executer_error', { error })
       if (defaultErrorResponse) {
         res.status(defaultErrorResponse.httpCode).json(defaultErrorResponse.data)
       } else {
@@ -18,7 +18,7 @@ const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: Erro
         res.status(errorResponse.httpCode).json(errorResponse.data)
       }
     } finally {
-      logger.debug(req, { executionTime: Date.now() - startTime })
+      logger.debug(req, 'route_executer', { executionTime: Date.now() - startTime })
     }
   }
   return executer

@@ -21,9 +21,9 @@ export const restWebServiceRequest = async (
     logExecutionDetails(req, config, webServiceName, startTime, response)
     return response
   } catch (error) {
-    logger.error(req, { error })
+    logger.error(req, webServiceName, { error })
     throw error
   } finally {
-    logger.info(req, { webServiceName, executionTime: Date.now() - startTime })
+    logger.info(req, webServiceName, { executionTime: Date.now() - startTime })
   }
 }

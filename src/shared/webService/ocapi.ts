@@ -2,7 +2,6 @@ import { restWebServiceRequest, WebServiceInput } from './axios'
 import { Method, AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Request } from 'express'
 // https://www.npmjs.com/package/axios
-//await axios.get('http://localhost:3000/healthcheck')
 
 const WEB_SERVICE_NAME = 'OCAPI'
 
