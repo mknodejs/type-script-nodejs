@@ -48,6 +48,6 @@ const enrichWithSearchKeys = (req: Request, logKey: string, data: any): any => {
   return {
     logKey,
     data,
-    searchKeys: { instanceId: SERVER_INSTANCE_ID, requestId }
+    searchKeys: { serverId: SERVER_INSTANCE_ID, requestId }
   }
 }
