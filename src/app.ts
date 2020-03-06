@@ -4,6 +4,8 @@ import cors from 'cors'
 import getRouters from './routes'
 import cookieParser from 'cookie-parser'
 import { addRequestId } from './shared/logger/request-execution-details'
+import { config } from './config'
+
 const app = express()
 app.use(cors())
 app.use(json())
@@ -19,4 +21,4 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({ message: err.message })
 })
 
-app.listen(3000, () => console.log(`App listening on port ${3000}!`))
+app.listen(3000, () => console.log({ serverId: config.serverId, startTime: new Date() }))

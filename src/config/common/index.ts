@@ -9,6 +9,5 @@ import { CommonConfig } from './schema/common'
 export default (env: string): CommonConfig => {
   const configMap = { localhost, dev, qa, loadtest, prod }
   const config = getValue(configMap, `${env}`, {})
-  console.log({ config })
   return config
 }

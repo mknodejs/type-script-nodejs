@@ -15,7 +15,6 @@ const LogLevels = {
 }
 
 const LOG_LEVEL = LogLevels[config.common.logLevel][0]
-const SERVER_INSTANCE_ID = Date.now() + Math.floor(Math.random() * 10000)
 const donotLog = (logLevels: number) => logLevels < LOG_LEVEL
 
 export const error: LogInput = async (req, logKey, data) => {
@@ -49,6 +48,6 @@ const enrichWithSearchKeys = (req: Request, logKey: string, data: any): any => {
   return {
     logKey,
     data,
-    searchKeys: { serverId: SERVER_INSTANCE_ID, requestId, url }
+    searchKeys: { serverId: config.serverId, requestId, url }
   }
 }
