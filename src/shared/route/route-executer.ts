@@ -3,6 +3,7 @@ import { RouteCallback } from './route-callback'
 import { ErrorResponse } from '../response/response'
 import * as logger from '../logger'
 import getValue from 'get-value'
+import { printExecutionDetails } from '../logger/request-execution-details'
 
 const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: ErrorResponse) => {
   const executer = async (req: Request, res: Response, next: NextFunction) => {
@@ -23,7 +24,8 @@ const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: Erro
         res.status(errorResponse.httpCode).json(errorResponse.data)
       }
     } finally {
-      logger.debug(req, 'route_executer', { executionTime: Date.now() - startTime })
+      printExecutionDetails(req, startTime)
+      logger.info(req, 'route_executer', { executionTime: Date.now() - startTime })
     }
   }
   return executer
