@@ -14,7 +14,7 @@ const LogLevels = {
   error: [3, 'error']
 }
 
-const LOG_LEVEL = LogLevels[config.common.logLevel][0]
+const LOG_LEVEL = getValue(LogLevels, `${config.common.logLevel}.0`) || 2
 const donotLog = (logLevels: number) => logLevels < LOG_LEVEL
 
 export const error: LogInput = async (req, logKey, data) => {

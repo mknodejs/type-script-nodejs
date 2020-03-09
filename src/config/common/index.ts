@@ -1,13 +1,17 @@
-import localhost from './localhost'
-import dev from './dev'
-import qa from './qa'
-import loadtest from './loadtest'
-import prod from './prod'
-import getValue from 'get-value'
-import { CommonConfig } from './schema/common'
+//import getValue from 'get-value'
+import { schema } from './schema'
+//const Joi = require('@hapi/joi')
 
-export default (env: string): CommonConfig => {
-  const configMap = { localhost, dev, qa, loadtest, prod }
-  const config = getValue(configMap, `${env}`, {})
-  return config
+const config = (env: any) => {
+  const configData = {
+    logLevel: env.LOG_LEVEL
+  }
+  const { error, value } = schema.validate(configData)
+  if (error) {
+    console.log({ error, value })
+    throw new Error('Common config issue')
+  }
+  return value
 }
+
+export default config
