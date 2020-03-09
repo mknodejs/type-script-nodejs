@@ -25,7 +25,7 @@ const routeExecuter = (routeCallback: RouteCallback, defaultErrorResponse?: Erro
       }
     } finally {
       printExecutionDetails(req, startTime)
-      logger.info(req, 'route_executer', { executionTime: Date.now() - startTime })
+      logger.debug(req, 'route_executer', { executionTime: Date.now() - startTime })
     }
   }
   return executer
