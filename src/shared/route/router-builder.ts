@@ -9,6 +9,7 @@ interface RouterHandler {
 
 export default class RouterBuilder {
   private readonly router = Router()
+  private swagger = { paths: {}, definitions: {} }
   get: RouterHandler = (path, cb, defaultErrorResponse) => {
     this.router.get(path, routeExecuter(cb, defaultErrorResponse))
   }
@@ -23,6 +24,13 @@ export default class RouterBuilder {
   }
   delete: RouterHandler = (path, cb, defaultErrorResponse) => {
     this.router.delete(path, routeExecuter(cb, defaultErrorResponse))
+  }
+  addSwagger = (swaggerDoc: any) => {
+    if (!swaggerDoc.paths) throw new Error('invalid swagger doc')
+    this.swagger = swaggerDoc
+  }
+  getSwagger = () => {
+    return this.swagger
   }
   getRouter = () => {
     return this.router

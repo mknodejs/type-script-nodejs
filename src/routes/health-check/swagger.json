@@ -1,0 +1,44 @@
+{
+  "paths": {
+    "/healthcheck": {
+      "get": {
+        "tags": ["Health-check"],
+        "summary": "Get health status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/health-check-response"
+            }
+          }
+        }
+      }
+    },
+    "/healthcheck/webservicecheck": {
+      "get": {
+        "tags": ["Health-check"],
+        "summary": "webservicecheck",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/health-check-response"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "health-check-response": {
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
